@@ -1,0 +1,31 @@
+Code to demonstrate setting up a fluid problem and solving with a sparse matrix solver
+--------------------------------------------------------------------------------------
+We use cusp (deprecated) for now. Extensions to cusparse should follow.
+This was a toy problem to play around with matrix and vector containers that I set up using a fair bit of
+code from Daoqi Yang's book: http://www.math.wayne.edu/~yang/book.htm (highly recommended)
+"C++ and Object Oriented Numeric Computing for Scientists and Engineers"
+
+Stencil 2D poisson solver with 1D domain decomposition in the x-direction.
+
+Solves for \partial^u/\partial^x^2 + \partial^2 u/\partial y^2 = 0
+
+with BCs u=0 everywhere except at y=0 where u=1.
+
+i.e. y=1; u=1;
+     y=0; u=0;
+     x=0; u=0;
+     x=1; u=0;     
+
+Consider a cartesian domain with (nx_max * ny_max) points.
+Decompose in the x direction into (nx_max/np * ny_max) = (nx * ny) points using MPI.
+
+Assign each rank to 1 CPU, and assuming that there is only 1 device, compute them in the GPU.
+
+
+General workflow:
+1) Create data-structures (which is called 'platter') and ghost cells for each rank.
+2) Create some infrastructure to manipulate matrix (Mtx::get_csr_matrix, etc. in matrix_init.cxx)
+3) Solve with library call. 
+
+
+

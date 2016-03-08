@@ -1,0 +1,3 @@
+nvcc -arch=sm_35 -c main_cusp.cu -o poisson_cusp.o -I/usr/include/openmpi -DDEBUG=1 -I./matvec_methods/ -I/usr/local/cuda/include -I/usr/local/include/cusplibrary
+make: nvcc: Command not found
+make: *** [poisson_cusp.o] Error 127
