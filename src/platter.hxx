@@ -115,9 +115,6 @@ public:
   void copy_rhs_to_cusp(cusp::array1d<double, cusp::host_memory> &) const;
   void copy_rhs_to_array(double *) const;
 
-  void create_send_maps(int &num_neighbors, int *neighbors, int *send_sizes, int **send_maps,int gleft_offset, int gright_offset);
-  void create_recv_maps(int &num_neighbors, int *neighbors, int *recv_sizes, int **recv_maps, int gleft_offset, int gright_offset);
-    
   void assign(int, int, double, cusp::array2d<double, cusp::host_memory> &) const;
   int outofbounds(int) const;
   
