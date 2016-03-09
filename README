@@ -21,6 +21,7 @@ Decompose in the x direction into (nx_max/np * ny_max) = (nx * ny) points using 
 
 Assign each rank to 1 CPU, and assuming that there is only 1 device, compute them in the GPU.
 
+NOTE: The code will not solve for distributed problems correctly. For this reason, we should only run on 1 rank. 
 
 General workflow:
 1) Create data-structures (which is called 'platter') and ghost cells for each rank.
